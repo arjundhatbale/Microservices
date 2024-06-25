@@ -9,4 +9,5 @@ import com.main.Entites.Question;
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
 	List<Question> findByQuizId(Long quizId);
+	
 }
