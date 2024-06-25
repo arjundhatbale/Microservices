@@ -12,7 +12,6 @@ import com.main.exception.ResourceNotFoundException;
 
 @Service
 public class QuestionServiceImpl implements QuestoinService{
-
 	
 	@Autowired
 	private QuestionRepository questionRepository; 
@@ -45,6 +44,15 @@ public class QuestionServiceImpl implements QuestoinService{
 	public List<Question> getQuestionsOfQuiz(Long questionId) {
 		// TODO Auto-generated method stub
 		return this.questionRepository.findByQuizId(questionId);
+	}
+
+
+	@Override
+	public String deleteQuestion(Long questionId) {
+		// TODO Auto-generated method stub
+		Question question = this.questionRepository.findById(questionId).orElseThrow(()-> new ResourceNotFoundException("Question of id : " + questionId + " is not found ..."));
+		this.questionRepository.deleteById(questionId);
+		return "Question Deleted Successfully...";
 	}
 
 }

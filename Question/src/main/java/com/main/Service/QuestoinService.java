@@ -13,7 +13,7 @@ public interface QuestoinService {
 	
 	Question get(Long questionId);
 	
-	
+	String deleteQuestion(Long questionId);
 	List<Question> getQuestionsOfQuiz(Long questionId);
 	
 }

@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,6 +53,13 @@ public class QuestionController {
 		logger.info("Request Receive to Get All Questions...");
 		 
 		return new ResponseEntity<>(this.questoinService.get(),HttpStatus.ACCEPTED);
+	}
+	
+	@DeleteMapping("/{questionId}")
+	public ResponseEntity<String> deleteQuestionByid(@PathVariable Long questionId){
+		logger.info("Requestion Receive to delete Question  by Question id ...");
+		this.questoinService.deleteQuestion(questionId);
+		return new ResponseEntity<String>("Question Deleted Successfully...", HttpStatus.OK);
 	}
 
 //  get all question of specific quiz
